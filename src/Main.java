@@ -64,32 +64,37 @@ class PeopleIterator implements Iterator<Person>{
 
 public class Main {
     public static void main(String[] args) {
-//        List<Person> people = new ArrayList<>();
-//        people.add(new Person("Charlie", 30));
-//        people.add(new Person("Alice", 25));
-//        people.add(new Person("Bob", 20));
-//
-//        // Сортировка списка людей по имени с помощью компаратора
-//        Collections.sort(people, new NameComparator());
-//
-//        // Вывод отсортированного списка с помощью Iterator
-//        System.out.println("People sorted by name:");
-//        Iterator<Person> iterator = people.iterator();
-//        while (iterator.hasNext()) {
-//            Person person = iterator.next();
-//            System.out.println(person.getName() + ": " + person.getAge());
-//        }
-        Person p1 =  new Person("Charlie", 30);
+        List<Person> people = new ArrayList<>();
+        people.add(new Person("Charlie", 30));
+        people.add(new Person("Alice", 25));
+        people.add(new Person("Bob", 20));
+
+        // Сортировка списка людей по имени с помощью компаратора
+        Collections.sort(people, new NameComparator());
+        NameComparator nameComparator = new NameComparator();
+        Person p1 =  new Person("b", 30);
         Person p2 =  new Person("Johnh", 30);
         Person p3 =  new Person("Alex", 30);
-        Person p4 =  new Person("Gordon", 30);
-        List list = new ArrayList<>(List.of(p1,p2,p3,p4));
-        School school = new School();
-        school.setList(list);
-        Iterator<Person> iterator = school.iterator();
-        while (iterator.hasNext()){
+        Person p4 =  new Person("a", 30);
+        System.out.println(nameComparator.compare(p1, p4));
+        System.out.println();
+
+        // Вывод отсортированного списка с помощью Iterator
+        System.out.println("People sorted by name:");
+        Iterator<Person> iterator = people.iterator();
+        while (iterator.hasNext()) {
             Person person = iterator.next();
-            System.out.println("name " + person.getName() + " age " + person.getAge());
+            System.out.println(person.getName() + ": " + person.getAge());
         }
+
+//        List list = new ArrayList<>(List.of(p1,p2,p3,p4));
+//        School school = new School();
+//        school.setList(list);
+//        TreeSet<Person> people = new TreeSet<>(new NameComparator());
+//        Iterator<Person> iterator = school.iterator();
+//        while (iterator.hasNext()){
+//            Person person = iterator.next();
+//            System.out.println("name " + person.getName() + " age " + person.getAge());
+//        }
     }
 }
