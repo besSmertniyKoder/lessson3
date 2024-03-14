@@ -72,10 +72,10 @@ public class Main {
         // Сортировка списка людей по имени с помощью компаратора
         Collections.sort(people, new NameComparator());
         NameComparator nameComparator = new NameComparator();
-        Person p1 =  new Person("b", 30);
+        Person p1 =  new Person("a", 30);
         Person p2 =  new Person("Johnh", 30);
         Person p3 =  new Person("Alex", 30);
-        Person p4 =  new Person("a", 30);
+        Person p4 =  new Person("b", 30);
         System.out.println(nameComparator.compare(p1, p4));
         System.out.println();
 
