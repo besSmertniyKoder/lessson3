@@ -1,7 +1,7 @@
 import java.util.*;
 
 // Создаем класс Person
-class Person {
+class Person implements Comparable<Person> {
     private String name;
     private int age;
 
@@ -17,8 +17,23 @@ class Person {
     public int getAge() {
         return age;
     }
+
+    @Override
+    public int compareTo(Person o) {
+        String s1 = name + age;
+        return s1.compareTo(o.getName() + o.getAge());
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
-class School implements Iterable<Person>{
+
+class School implements Iterable<Person> {
     private List list = new ArrayList<>();
 
     public List getList() {
@@ -42,7 +57,8 @@ class NameComparator implements Comparator<Person> {
         return p1.getName().compareTo(p2.getName());
     }
 }
-class PeopleIterator implements Iterator<Person>{
+
+class PeopleIterator implements Iterator<Person> {
     public PeopleIterator(List<Person> people) {
         this.people = people;
     }
@@ -72,29 +88,34 @@ public class Main {
         // Сортировка списка людей по имени с помощью компаратора
         Collections.sort(people, new NameComparator());
         NameComparator nameComparator = new NameComparator();
-        Person p1 =  new Person("a", 30);
-        Person p2 =  new Person("Johnh", 30);
-        Person p3 =  new Person("Alex", 30);
-        Person p4 =  new Person("b", 30);
+        Person p1 = new Person("₽", 30);
+        Person p2 = new Person("Johnh", 30);
+        Person p3 = new Person("Alex", 30);
+        Person p4 = new Person(".", 30);
         System.out.println(nameComparator.compare(p1, p4));
         System.out.println();
 
-        // Вывод отсортированного списка с помощью Iterator
-        System.out.println("People sorted by name:");
-        Iterator<Person> iterator = people.iterator();
-        while (iterator.hasNext()) {
-            Person person = iterator.next();
-            System.out.println(person.getName() + ": " + person.getAge());
-        }
+//        // Вывод отсортированного списка с помощью Iterator
+//        System.out.println("People sorted by name:");
+//        Iterator<Person> iterator = people.iterator();
+//        while (iterator.hasNext()) {
+//            Person person = iterator.next();
+//            System.out.println(person.getName() + ": " + person.getAge());
+//        }
 
-//        List list = new ArrayList<>(List.of(p1,p2,p3,p4));
+//        List list = new ArrayList<>(List.of(p1, p2, p3, p4));
 //        School school = new School();
 //        school.setList(list);
 //        TreeSet<Person> people = new TreeSet<>(new NameComparator());
 //        Iterator<Person> iterator = school.iterator();
-//        while (iterator.hasNext()){
+//        while (iterator.hasNext()) {
 //            Person person = iterator.next();
+//            people.add(person);
 //            System.out.println("name " + person.getName() + " age " + person.getAge());
 //        }
-    }
+//        System.out.println(people);
+//
+//
+        }
+
 }
